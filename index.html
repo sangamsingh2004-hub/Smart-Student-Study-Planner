@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Student Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">✦</span>
+      <div>
+        <strong>StudyFlow</strong>
+        <small>Smart Student Planner</small>
+      </div>
+    </div>
+
+    <nav>
+      <a class="nav-link active" href="#dashboard">▦ Dashboard</a>
+      <a class="nav-link" href="#tasks-section">☑ My Tasks</a>
+      <a class="nav-link" href="#smart-section">✧ Smart Suggestions</a>
+    </nav>
+
+    <div class="sidebar-note">
+      <div class="note-icon">✎</div>
+      <strong>Stay focused!</strong>
+      <p>Small steps every day lead to big results.</p>
+    </div>
+
+    <div class="sidebar-footer">Made for students, with ♥</div>
+  </aside>
+
+  <main class="main-content" id="dashboard">
+
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+        <h1>Good day, student! ☀️</h1>
+        <p class="subheading">
+          Plan your work, focus on your goals, and make today count.
+        </p>
+      </div>
+      <div class="date-pill" id="todayLabel"></div>
+    </header>
+
+    <!-- Dashboard Cards -->
+    <section class="stats-grid">
+      <article class="stat-card">
+        <div class="stat-icon purple">▣</div>
+        <p>Total Tasks</p>
+        <strong id="totalCount">0</strong>
+        <span class="stat-caption">All your study tasks</span>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon green">✓</div>
+        <p>Completed</p>
+        <strong id="completedCount">0</strong>
+        <span class="stat-caption">Tasks finished</span>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon orange">◷</div>
+        <p>Pending</p>
+        <strong id="pendingCount">0</strong>
+        <span class="stat-caption">Tasks left to do</span>
+      </article>
+
+      <article class="stat-card progress-card">
+        <div class="stat-icon blue">↗</div>
+        <p>Overall Progress</p>
+        <strong id="progressPercent">0%</strong>
+        <div class="progress-track">
+          <div id="progressFill"></div>
+        </div>
+        <span class="stat-caption">Keep going, you're doing great!</span>
+      </article>
+    </section>
+
+    <div class="content-grid">
+
+      <!-- Task List -->
+      <section class="panel tasks-panel" id="tasks-section">
+        <div class="panel-heading">
+          <div>
+            <h2>My Study Tasks</h2>
+            <p>Manage your assignments and study goals.</p>
+          </div>
+          <button class="primary-btn" id="openAddForm">＋ Add Task</button>
+        </div>
+
+        <div class="task-filters">
+          <button class="filter-btn active" data-filter="all">All Tasks</button>
+          <button class="filter-btn" data-filter="pending">Pending</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-illustration">📚</div>
+          <h3>No tasks yet</h3>
+          <p>Add your first study task and start planning your day.</p>
+          <button class="primary-btn" id="emptyAddBtn">＋ Create a Task</button>
+        </div>
+      </section>
+
+      <!-- Right Side -->
+      <aside class="right-column">
+
+        <!-- Add Task Form -->
+        <section class="panel add-panel" id="addTaskPanel">
+          <div class="panel-heading compact">
+            <div>
+              <h2>Add New Task</h2>
+              <p>Fill in the details below.</p>
+            </div>
+            <button class="close-btn" id="closeAddForm">×</button>
+          </div>
+
+          <form id="taskForm">
+            <label for="taskTitle">Task Name</label>
+            <input id="taskTitle" type="text"
+              placeholder="e.g. Revise Chapter 2" required>
+
+            <label for="taskSubject">Subject</label>
+            <select id="taskSubject" required>
+              <option value="" disabled selected>Select subject</option>
+              <option>Computer Science</option>
+              <option>Mathematics</option>
+              <option>English</option>
+              <option>Science</option>
+              <option>Business</option>
+              <option>Other</option>
+            </select>
+
+            <div class="form-row">
+              <div>
+                <label for="taskDue">Due Date</label>
+                <input id="taskDue" type="date">
+              </div>
+
+              <div>
+                <label for="taskPriority">Priority</label>
+                <select id="taskPriority">
+                  <option>Medium</option>
+                  <option>High</option>
+                  <option>Low</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="primary-btn submit-btn" type="submit">
+              Add to Planner
+            </button>
+          </form>
+        </section>
+
+        <!-- Smart Suggestions -->
+        <section class="panel smart-panel" id="smart-section">
+          <div class="smart-title">
+            <div class="sparkle">✧</div>
+            <div>
+              <h2>Smart Study Suggestions</h2>
+              <p>Helpful tips for your plan</p>
+            </div>
+          </div>
+
+          <div id="suggestions" class="suggestions"></div>
+        </section>
+
+        <section class="quote-card">
+          <div class="quote-mark">“</div>
+          <p>The secret of getting ahead is getting started.</p>
+          <span>— Mark Twain (attributed)</span>
+        </section>
+
+      </aside>
+    </div>
+
+    <footer class="footer">
+      StudyFlow • Your simple space to study smarter
+    </footer>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
